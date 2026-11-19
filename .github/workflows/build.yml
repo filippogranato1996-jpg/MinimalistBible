@@ -34,11 +34,11 @@ jobs:
             fi
             echo "OK  $b  $(stat -c %s "$file") Bytes"
           done
-      - name: APK bauen
+      - name: Release-APK bauen
         run: |
           cd "$(cat .projdir)"
-          gradle assembleDebug --no-daemon
+          gradle assembleRelease --no-daemon
       - uses: actions/upload-artifact@v4
         with:
           name: MinimalistBible-APK
-          path: "**/app-debug.apk"
+          path: "**/app-release.apk"
